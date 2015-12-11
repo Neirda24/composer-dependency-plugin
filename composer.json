@@ -1,0 +1,28 @@
+{
+    "name": "neirda24/composer-dependency-plugin",
+    "description": "Plugin to check if a dependency is already installed in a parent project.",
+    "type": "composer-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Adrien Schaegis",
+            "email": "rochesadrien@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4",
+        "composer-plugin-api": "^1.0"
+    },
+    "require-dev": {
+        "composer/composer": "~1.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Neirda24\\Composer\\ParentDependencyPlugin\\": "lib/"
+        }
+    },
+    "extra": {
+        "class": "Neirda24\\Composer\\ParentDependencyPlugin\\Neirda24ParentDependencyPlugin"
+    }
+}
