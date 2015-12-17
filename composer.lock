@@ -4,9 +4,40 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8f666e20240069ebdd26483254d759de",
-    "content-hash": "da2216c6b3ed9c2efa9a8e5b687e8849",
-    "packages": [],
+    "hash": "1f1cca01912d4c1c4d2cf2bd7be4c0f2",
+    "content-hash": "ef18440d570616eefdab670fec5e3f21",
+    "packages": [
+        {
+            "name": "neirda24/tools-bundle",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Neirda24/tools-bundle.git",
+                "reference": "503f3722b9cbe0e2901168f791f258baafd460be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Neirda24/tools-bundle/zipball/503f3722b9cbe0e2901168f791f258baafd460be",
+                "reference": "503f3722b9cbe0e2901168f791f258baafd460be",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Neirda24\\Bundle\\ToolsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Tools bundle",
+            "time": "2015-12-17 16:41:41"
+        }
+    ],
     "packages-dev": [
         {
             "name": "composer/composer",
@@ -14,12 +45,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "1c525b76f81123af180743d31c208c29351cf931"
+                "reference": "c9501a4cc164b176de48e44b239e619cfd5f14e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/1c525b76f81123af180743d31c208c29351cf931",
-                "reference": "1c525b76f81123af180743d31c208c29351cf931",
+                "url": "https://api.github.com/repos/composer/composer/zipball/c9501a4cc164b176de48e44b239e619cfd5f14e5",
+                "reference": "c9501a4cc164b176de48e44b239e619cfd5f14e5",
                 "shasum": ""
             },
             "require": {
@@ -80,7 +111,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2015-12-09 15:47:26"
+            "time": "2015-12-16 18:51:41"
         },
         {
             "name": "composer/semver",
