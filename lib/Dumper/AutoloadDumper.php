@@ -45,7 +45,7 @@ class AutoloadDumper
      */
     protected function getParentVendorDir()
     {
-        $parentVendorDir = '../../' . $this->parentContainer->getPathToParentVendor();
+        $parentVendorDir = '../../' . rtrim($this->parentContainer->getPathToParentVendor(), '/');
         if (!StringUtils::endsWith($parentVendorDir, '/vendor')) {
             $parentVendorDir .= '/vendor';
         }

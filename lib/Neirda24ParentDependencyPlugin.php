@@ -8,6 +8,7 @@ use Composer\Installer\InstallerEvent;
 use Composer\Installer\InstallerEvents;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
+use Composer\Script\Event;
 use Neirda24\Composer\ParentDependencyPlugin\Container\ParentContainer;
 use Neirda24\Composer\ParentDependencyPlugin\Dumper\AutoloadDumper;
 use Neirda24\Composer\ParentDependencyPlugin\Manipulator\AutoloadManipulator;
@@ -66,26 +67,24 @@ class Neirda24ParentDependencyPlugin implements PluginInterface, EventSubscriber
     }
 
     /**
-     * Add pool in plugin.
+     * Move the old files.
      *
-     * @param InstallerEvent $event
+     * @param Event $event
      */
-    public function moveFiles($event)
+    public function moveFiles(Event $event)
     {
-        var_dump($this->composer->getConfig()->all());die; // Get the vendor dir
-        $manipulator = new AutoloadManipulator($vendorDir);
+        $manipulator = new AutoloadManipulator($this->composer->getConfig()->get('vendor-dir'));
         $manipulator->run();
     }
 
     /**
-     * Add pool in plugin.
+     * Dump the new files
      *
-     * @param InstallerEvent $event
+     * @param Event $event
      */
-    public function dumpFiles($event)
+    public function dumpFiles(Event $event)
     {
-        var_dump($this->composer->getConfig()->all());die; // Get the vendor dir
-        $dumper = new AutoloadDumper($this->parentContainer, $vendorDir);
+        $dumper = new AutoloadDumper($this->parentContainer, $this->composer->getConfig()->get('vendor-dir'));
         $dumper->run();
     }
 

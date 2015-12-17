@@ -38,7 +38,7 @@ class AutoloadManipulator
      */
     protected function moveFile($oldName, $newName)
     {
-        return rename($this->vendorDir . '/' . $oldName, $this->vendorDir . '/' . $newName);
+        return rename($this->vendorDir . '/composer/' . $oldName, $this->vendorDir . '/composer/' . $newName);
     }
 
     /**
