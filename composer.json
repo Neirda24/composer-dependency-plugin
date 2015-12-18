@@ -1,6 +1,7 @@
 {
     "name": "neirda24/composer-dependency-plugin",
-    "description": "Plugin to check if a dependency is already installed in a parent project.",
+    "description": "Plugin to define a composer parent. If a dependency is already installed in the parent project, it won't be loaded.",
+    "keywords": ["composer", "parent dependency"],
     "type": "composer-plugin",
     "license": "proprietary",
     "authors": [
@@ -11,7 +12,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4",
+        "php": ">=5.3",
         "composer-plugin-api": "^1.0",
         "neirda24/tools-bundle": "~1"
     },

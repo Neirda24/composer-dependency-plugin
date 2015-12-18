@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f1cca01912d4c1c4d2cf2bd7be4c0f2",
-    "content-hash": "ef18440d570616eefdab670fec5e3f21",
+    "hash": "f13d8477c0aa145c6b169243815f3dfb",
+    "content-hash": "933b6b277f8b83f952e3d9d3dd8fe929",
     "packages": [
         {
             "name": "neirda24/tools-bundle",
@@ -712,7 +712,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4"
+        "php": ">=5.3"
     },
     "platform-dev": []
 }

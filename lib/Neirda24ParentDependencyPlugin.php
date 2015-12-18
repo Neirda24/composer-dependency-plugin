@@ -4,15 +4,12 @@ namespace Neirda24\Composer\ParentDependencyPlugin;
 
 use Composer\Composer;
 use Composer\EventDispatcher\EventSubscriberInterface;
-use Composer\Installer\InstallerEvent;
-use Composer\Installer\InstallerEvents;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
 use Composer\Script\Event;
 use Neirda24\Composer\ParentDependencyPlugin\Container\ParentContainer;
 use Neirda24\Composer\ParentDependencyPlugin\Dumper\AutoloadDumper;
 use Neirda24\Composer\ParentDependencyPlugin\Manipulator\AutoloadManipulator;
-use Symfony\Component\Console\ConsoleEvents;
 
 class Neirda24ParentDependencyPlugin implements PluginInterface, EventSubscriberInterface
 {
@@ -37,8 +34,7 @@ class Neirda24ParentDependencyPlugin implements PluginInterface, EventSubscriber
     protected $parentContainer;
 
     /**
-     * @param Composer    $composer
-     * @param IOInterface $io
+     * {@inheritdoc}
      */
     public function activate(Composer $composer, IOInterface $io)
     {
@@ -54,16 +50,16 @@ class Neirda24ParentDependencyPlugin implements PluginInterface, EventSubscriber
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
-        return [
-            'post-autoload-dump' => [
-                ['moveFiles', 0],
-                ['dumpFiles', 0],
-            ],
-        ];
+        return array(
+            'post-autoload-dump' => array(
+                array('moveFiles', 0),
+                array('dumpFiles', 0),
+            ),
+        );
     }
 
     /**

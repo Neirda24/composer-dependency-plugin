@@ -5,6 +5,13 @@ namespace Neirda24\Composer\ParentDependencyPlugin\Dumper;
 use Neirda24\Bundle\ToolsBundle\Utils\StringUtils;
 use Neirda24\Composer\ParentDependencyPlugin\Container\ParentContainer;
 
+/**
+ * Class AutoloadDumper
+ *
+ * @author Adrien Schaegis <adrien@iron-mail.net>
+ *
+ * Dump the autoload files.
+ */
 class AutoloadDumper
 {
     /**
@@ -13,6 +20,8 @@ class AutoloadDumper
     protected $parentContainer;
 
     /**
+     * Relative path to the vendor directory of the current project.
+     *
      * @var string
      */
     protected $vendorDir;
@@ -30,6 +39,8 @@ class AutoloadDumper
     }
 
     /**
+     * Dump all files.
+     *
      * @return void
      */
     public function run()
@@ -54,6 +65,8 @@ class AutoloadDumper
     }
 
     /**
+     * Dump the file "autoload_classmap.php".
+     *
      * @return void
      */
     protected function dumpAutoloadClassmap()
@@ -75,11 +88,13 @@ EOF;
     }
 
     /**
+     * Dump the file "autoload_files.php".
+     *
      * @return void
      */
     protected function dumpAutoloadFiles()
     {
-        $parentVendorDir      = $this->getParentVendorDir();
+        $parentVendorDir   = $this->getParentVendorDir();
         $autoloadFilesFile = <<<EOF
 <?php
 
@@ -96,22 +111,24 @@ EOF;
     }
 
     /**
+     * Dump the file "autoload_psr4.php".
+     *
      * @return void
      */
     protected function dumpAutoloadPsr4()
     {
-        $parentVendorDir      = $this->getParentVendorDir();
+        $parentVendorDir  = $this->getParentVendorDir();
         $autoloadPsr4File = <<<EOF
 <?php
 
 \$composer = require_once __DIR__  . '/autoload_psr4_child.php';
 
-\$parentPsr4 = require __DIR__ . '/$parentVendorDir/composer/autoload_psr4.php';
+\$parentPsr4       = require __DIR__ . '/$parentVendorDir/composer/autoload_psr4.php';
 \$parentNamespaces = require __DIR__ . '/$parentVendorDir/composer/autoload_namespaces.php';
-\$parent = array_merge(\$parentPsr4, \$parentNamespaces);
+\$parent           = array_merge(\$parentPsr4, \$parentNamespaces);
 
 \$declaredClasses = get_declared_classes();
-\$namespaces = [];
+\$namespaces      = array();
 array_walk(\$declaredClasses, function (\$class) use (&\$namespaces) {
     \$namespace = preg_replace('/(.*)\\\\.*/', '$1', \$class);
     if (!array_key_exists(\$namespace, \$namespaces)) {
@@ -132,11 +149,13 @@ EOF;
     }
 
     /**
+     * Dump the file "autoload_namespaces.php".
+     *
      * @return void
      */
     protected function dumpAutoloadNamespaces()
     {
-        $parentVendorDir      = $this->getParentVendorDir();
+        $parentVendorDir        = $this->getParentVendorDir();
         $autoloadNamespacesFile = <<<EOF
 <?php
 
@@ -147,7 +166,7 @@ EOF;
 \$parent = array_merge(\$parentPsr4, \$parentNamespaces);
 
 \$declaredClasses = get_declared_classes();
-\$namespaces = [];
+\$namespaces = array();
 array_walk(\$declaredClasses, function (\$class) use (&\$namespaces) {
     \$namespace = preg_replace('/(.*)\\\\.*/', '$1', \$class);
     if (!array_key_exists(\$namespace, \$namespaces)) {

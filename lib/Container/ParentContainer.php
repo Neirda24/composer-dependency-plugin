@@ -2,11 +2,18 @@
 
 namespace Neirda24\Composer\ParentDependencyPlugin\Container;
 
-use Neirda24\Bundle\ToolsBundle\Utils\StringUtils;
-
+/**
+ * Class ParentContainer
+ *
+ * @author Adrien Schaegis <adrien@iron-mail.net>
+ *
+ * Contain informations about the parent <code>composer.json</code>
+ */
 class ParentContainer
 {
     /**
+     * Relative path to the parent vendor directory.
+     *
      * @var string
      */
     protected $pathToParentVendor;

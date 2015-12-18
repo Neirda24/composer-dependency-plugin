@@ -2,9 +2,18 @@
 
 namespace Neirda24\Composer\ParentDependencyPlugin\Manipulator;
 
+/**
+ * Class AutoloadManipulator
+ *
+ * @author Adrien Schaegis <adrien@iron-mail.net>
+ *
+ * Manipulator of the existing autoload files.
+ */
 class AutoloadManipulator
 {
     /**
+     * Relative path to the vendor directory of the current project.
+     *
      * @var string
      */
     protected $vendorDir;
@@ -20,6 +29,8 @@ class AutoloadManipulator
     }
 
     /**
+     * Move all files.
+     *
      * @return void
      */
     public function run()
@@ -31,6 +42,8 @@ class AutoloadManipulator
     }
 
     /**
+     * Rename one autoload file into something else.
+     *
      * @param string $oldName
      * @param string $newName
      *
@@ -42,6 +55,8 @@ class AutoloadManipulator
     }
 
     /**
+     * Rename "autoload_classmap.php" into "autoload_classmap_child.php"
+     *
      * @return bool
      */
     protected function moveAutoloadClassmap()
@@ -50,6 +65,8 @@ class AutoloadManipulator
     }
 
     /**
+     * Rename "autoload_files.php" into "autoload_files_child.php"
+     *
      * @return bool
      */
     protected function moveAutoloadFiles()
@@ -58,6 +75,8 @@ class AutoloadManipulator
     }
 
     /**
+     * Rename "autoload_namespaces.php" into "autoload_namespaces_child.php"
+     *
      * @return bool
      */
     protected function moveAutoloadNamespaces()
@@ -66,6 +85,8 @@ class AutoloadManipulator
     }
 
     /**
+     * Rename "autoload_psr4.php" into "autoload_psr4_child.php"
+     *
      * @return bool
      */
     protected function moveAutoloadPsr4()
