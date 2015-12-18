@@ -202,6 +202,6 @@ EOF;
      */
     protected function copyCacheManager()
     {
-        copy(__DIR__ . '/../var/Neirda24AutoloadCache.php', $this->vendorDir . '/composer/Neirda24AutoloadCache.php');
+        copy(__DIR__ . '/../../var/Neirda24AutoloadCache.php', $this->vendorDir . '/composer/Neirda24AutoloadCache.php');
     }
 }

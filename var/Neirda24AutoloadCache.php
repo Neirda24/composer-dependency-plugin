@@ -24,9 +24,43 @@ class Neirda24AutoloadCache
      *
      * @return string
      */
-    protected function generateFileNAmeFromKey($key)
+    protected function generateFileNameFromKey($key)
     {
         return $this->vendorDir . '/composer/cache_autoload_' . $key . '.php';
+    }
+
+    /**
+     * @param array $array
+     * @param int   $level
+     *
+     * @return string
+     */
+    protected function arrayToString(array $array, $level = 0)
+    {
+        $result = 'array(';
+
+        $spaces = '';
+        for ($i = 0; $i <= $level; $i++) {
+            $spaces .= '    ';
+        }
+
+        foreach ($array as $key => $value) {
+            if (!is_int($key)) {
+                $key = '"' . str_replace('\\', '\\\\', $key) . '"';
+            }
+            if (is_array($value)) {
+                $stringValue = $this->arrayToString($value, ($level + 1));
+            } else {
+                $stringValue = '"' . str_replace('\\', '\\\\', $value) . '"';
+            }
+
+            $result .= sprintf('%s%s => %s,', $spaces, $key, $stringValue);
+            $result .= PHP_EOL;
+        }
+
+        $result .= ')';
+
+        return $result;
     }
 
     /**
@@ -37,12 +71,8 @@ class Neirda24AutoloadCache
      */
     public function save($key, array $values)
     {
-        $stringArray = 'return array(';
-        foreach ($values as $key => $value) {
-            $stringArray .= sprintf('    "%s" => "%s",', $key, $value);
-            $stringArray .= PHP_EOL;
-        }
-        $stringArray .= ');';
+        $stringArray = $this->arrayToString($values);
+        $stringArray = 'return ' . $stringArray . ';';
 
         $file = <<<EOF
 <?php
@@ -52,7 +82,7 @@ class Neirda24AutoloadCache
 $stringArray
 EOF;
 
-        file_put_contents($this->generateFileNAmeFromKey($key), $file);
+        file_put_contents($this->generateFileNameFromKey($key), $file);
     }
 
     /**
@@ -62,6 +92,6 @@ EOF;
      */
     public function exists($key)
     {
-        return file_exists($this->generateFileNAmeFromKey($key));
+        return file_exists($this->generateFileNameFromKey($key));
     }
 }
