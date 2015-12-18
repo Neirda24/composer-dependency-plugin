@@ -12,7 +12,7 @@ namespace Neirda24\Composer\ParentDependencyPlugin\Manipulator;
 class AutoloadManipulator
 {
     /**
-     * Relative path to the vendor directory of the current project.
+     * Absolute path to the vendor directory of the current project.
      *
      * @var string
      */

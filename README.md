@@ -1,3 +1,6 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/70f0a8dc-3226-40b6-a349-288af3112777/mini.png)](https://insight.sensiolabs.com/projects/70f0a8dc-3226-40b6-a349-288af3112777)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Neirda24/composer-dependency-plugin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Neirda24/composer-dependency-plugin/?branch=master)
+
 Goal
 ====
 
