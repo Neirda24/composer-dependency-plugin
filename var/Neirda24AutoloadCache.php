@@ -39,9 +39,12 @@ class Neirda24AutoloadCache
     {
         $result = 'array(';
 
-        $spaces = '';
+        $spacesIndent = $spacesStart = '';
         for ($i = 0; $i <= $level; $i++) {
-            $spaces .= '    ';
+            if ($i > 0) {
+                $spacesStart .= '    ';
+            }
+            $spacesIndent .= '    ';
         }
 
         foreach ($array as $key => $value) {
@@ -54,11 +57,12 @@ class Neirda24AutoloadCache
                 $stringValue = '"' . str_replace('\\', '\\\\', $value) . '"';
             }
 
-            $result .= sprintf('%s%s => %s,', $spaces, $key, $stringValue);
-            $result .= PHP_EOL;
+            $result .= "\n";
+            $result .= sprintf('%s%s => %s,', $spacesIndent, $key, $stringValue);
         }
 
-        $result .= ')';
+        $result .= "\n";
+        $result .= $spacesStart . ')';
 
         return $result;
     }
