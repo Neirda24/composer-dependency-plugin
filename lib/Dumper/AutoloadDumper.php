@@ -121,7 +121,7 @@ array_walk(\$declaredClasses, function (\$class) use (&\$namespaces) {
 
 \$diff = array_diff_key(\$composer, \$parent);
 \$diff = array_filter(\$diff, function (\$path, \$namespace) use (\$namespaces) {
-    return (array_key_exists(\$namespace, \$namespaces));
+    return (!array_key_exists(\$namespace, \$namespaces));
 }, ARRAY_FILTER_USE_BOTH);
 
 
@@ -157,7 +157,7 @@ array_walk(\$declaredClasses, function (\$class) use (&\$namespaces) {
 
 \$diff = array_diff_key(\$composer, \$parent);
 \$diff = array_filter(\$diff, function (\$path, \$namespace) use (\$namespaces) {
-    return (array_key_exists(\$namespace, \$namespaces));
+    return (!array_key_exists(\$namespace, \$namespaces));
 }, ARRAY_FILTER_USE_BOTH);
 
 
